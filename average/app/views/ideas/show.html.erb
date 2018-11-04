@@ -1,19 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @idea.name %>
-</p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @idea.description %>
-</p>
+<div>
+  <h3><%= @idea.name %></h3>
+</div>
 
-<p>
-  <strong>Picture:</strong>
+<div>
   <%= image_tag(@idea.picture_url, width: 600) if @idea.picture.present? %>
-</p>
+</div>
+
+<div>
+  <%= @idea.description %>
+</div>
 
 <%= link_to 'Edit', edit_idea_path(@idea) %> |
 <%= link_to 'Back', ideas_path %>

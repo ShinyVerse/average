@@ -1,25 +1,25 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Posts</h1>
-
 <table>
 
-  <tbody>
+  <div class = "article-board">
     <% @ideas.each do |idea| %>
-      <h3><%= idea.name %></h3>
-      <h4><%= idea.description %></h4>
-      <div class= 'post-image'>
+      <h4><%= idea.name %></h4>
+      <h5><%= truncate(idea.description, :length => 60,
+                                         :omission => '... (continued)') %>
+                                         <%= link_to 'Show', idea %>
+                                       </h5>
+      <div class= 'article-image'>
         <%= image_tag idea.picture_url, width: '100%' if idea.picture.present? %>
       </div>
-      <div class="post-links">
-        <%= link_to 'Show', idea %>
+      <div class="article-links">
         <%= link_to 'Edit', edit_idea_path(idea) %>
         <%= link_to 'Delete', idea, method: :delete, data: { confirm: 'Are you sure?' } %>
       </div>
     <% end %>
-  </tbody>
+  </div>
 </table>
 
 <br>
 
-<%= link_to 'New Idea', new_idea_path %>
+<%= link_to 'New Article', new_idea_path %>
