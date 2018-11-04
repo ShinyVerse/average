@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Posts</h1>
+
+<table>
+
+  <tbody>
+    <% @ideas.each do |idea| %>
+      <h3><%= idea.name %></h3>
+      <h4><%= idea.description %></h4>
+      <div class= 'post-image'>
+        <%= image_tag idea.picture_url, width: '100%' if idea.picture.present? %>
+      </div>
+      <div class="post-links">
+        <%= link_to 'Show', idea %>
+        <%= link_to 'Edit', edit_idea_path(idea) %>
+        <%= link_to 'Delete', idea, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Idea', new_idea_path %>
